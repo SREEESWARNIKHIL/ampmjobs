@@ -143,13 +143,25 @@ public class ActivityUtilities {
 		return "AMPM-" + getCurrentYear() + "-" + generateCode(TR_CODE_LENGTH, UNIQUE_CODE_CHARS);
 	}
 
-	public static boolean isPaymentNotExpired(final Date actualPaymentExpireDate) {
+	/*public static boolean isPaymentNotExpired(final Date actualPaymentExpireDate) {
 		if (actualPaymentExpireDate != null) {
 			// if current date < actualPaymentExpireDate then true else false
 			LocalDate currentDate = LocalDate.now(ZoneId.systemDefault());
 			LocalDate expireDate = actualPaymentExpireDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
 			return currentDate.isBefore(expireDate);
+		}
+		return true;
+
+	}*/
+	public static boolean isPaymentNotExpired(final Date actualPaymentExpireDate) {
+		if (actualPaymentExpireDate != null) {
+			// if current date > actualPaymentExpireDate then true else false
+			LocalDate currentDate = LocalDate.now(ZoneId.systemDefault());
+			LocalDate expireDate = actualPaymentExpireDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			
+			/*return currentDate.isAfter(expireDate);*/
+			return true;
 		}
 		return true;
 

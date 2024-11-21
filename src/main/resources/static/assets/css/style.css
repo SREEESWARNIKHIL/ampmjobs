@@ -24,7 +24,8 @@ h4,
 h5,
 h6 {
   font-family: "Raleway", sans-serif;
-  font-size: 25px;
+  font-size: 25px; 
+  
 }
 
 /*--------------------------------------------------------------
@@ -164,7 +165,7 @@ b.Mandatory {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  margin-top: -8px;
+  margin-top:-8px;
 }
 
 .navbar-login-buttons span{
@@ -198,6 +199,7 @@ b.Mandatory {
 
 .get-started-btn-small{
   margin-left: 22px;
+  margin-top:6px;
   background: #2891D1;
   color: #fff;
   border-radius: 50px;
@@ -221,6 +223,7 @@ b.Mandatory {
 */
 .navbar {
   padding: 0;
+  margin:0;
 }
 
 .navbar ul {
@@ -533,7 +536,7 @@ b.Mandatory {
 # Sections General
 --------------------------------------------------------------*/
 section {
-  padding: 60px 0;
+  padding: 15px 0;
   overflow: hidden;
 }
 
@@ -571,6 +574,7 @@ section {
   margin: 0;
   font-size: 36px;
   font-weight: 700;
+  line-height:1.4;
   text-transform: uppercase;
   font-family: "Poppins", sans-serif;
   color: #37423b;
@@ -718,7 +722,7 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Features
+#  
 --------------------------------------------------------------*/
 .features {
   padding-top: 0px;
@@ -758,6 +762,15 @@ section {
 .features .icon-box:hover h3 a {
   color:#D8783C;
 }
+
+@media (max-width: 576px) {
+	
+  .col-md-4 {
+    flex: 50%; 
+    max-width: 50%; 
+  }
+}
+
 
 /*--------------------------------------------------------------
 # Footer
@@ -1219,9 +1232,6 @@ section {
     background-color: #f4f4f4;
 }
 
-input:disabled {
-  /* background-color: #f4f4f4; */
-}
 input:disabled:hover {
     /* background-color: #ffcccc; */
     opacity: 0.8;
@@ -1308,7 +1318,6 @@ input:disabled:hover {
   font-size: 15px;
 }
 
-#account-confirmation-screen-button{}
 
 /* End Of Pre Password Prompt Message Styles */
 
@@ -1454,7 +1463,7 @@ input:disabled:hover {
 }
 
 .notification {
-    font-size: 20px;
+    font-size: 15px;
     color: white;
     text-align: center;
     white-space: nowrap;
@@ -1521,6 +1530,21 @@ input:disabled:hover {
 
 
 }
+
+@media (max-width:992px){
+	.notification{
+		display:none;
+	}
+}
+
+@media(max-width:576px){
+	.notification-1,
+	.notification-container-1{
+		display:none;
+	}
+}
+
+
 .clickhere-button{
 	margin: 0px;
 	padding: 0px;
@@ -1545,4 +1569,124 @@ input:disabled:hover {
 	border: 1px solid #2891D1;
 	font-weight: normal;
 }
+
 /*----------------*/
+/*mobile view notifications*/
+
+ .notification-container2 {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin-top:50px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #2891d1;
+    }
+.notification-carousel-container {
+	position: relative;
+      width: 100%;
+      max-width: 600px;
+      overflow: hidden;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background: #2891d1;
+    
+}
+
+    #notification2 {
+      padding: 15px;
+      text-align: center;
+      font-size:18px ;
+      color: #fff;
+    }
+
+
+    .notification-carousel-container {
+      display: none;
+    }
+
+    /* Show carousel only on mobile screens */
+    @media (max-width: 576px) {
+      .notification-container2 {
+        display: block; 
+     
+      }
+
+      .notification-carousel-container {
+        display: block; 
+      }
+    }
+    @media (max-width: 560px) {
+      .notification-container2 {
+		  max-width: 100%;
+		  }
+		  }
+
+    /* Hide carousel for screens between 577px and 1600px */
+    @media (min-width: 577px) and (max-width: 1600px) {
+      .notification-container2 {
+        display: none; 
+      }
+
+      .notification-carousel-container {
+        display: none; 
+      }
+    }
+
+    .carousel-container {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 15px;
+      text-align: center;
+      color: #333;
+    }
+
+    .dots-container {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .dot.active {
+      background-color: #717171;
+    }
+
+
+/*image & information chnages in homepage*/
+
+@media(max-width:576px){
+	.col-lg-5,
+	.col-lg-7{
+		display:none;
+	}	
+}
+
+
+ /*home page content*/
+ .pt-lg-7{
+	 line-height:1.8;
+ }
+ 
+ 
+.justify-content-end {
+  justify-content: flex-end !important;
+  padding-right: 40px !important;
+}

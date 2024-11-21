@@ -42,7 +42,9 @@
             <input id="login-number" type="tel" th:value="${userMobile}" disabled="disabled" placeholder="Phone Number" required>
 
 
-            <input type="text" id="login-dob" placeholder="Date Of Birth" max="2005-03-20" onfocus="(this.type='date')" pattern="\d{4}-\d{2}-\d{2}" required>
+            <!--<input type="text" id="login-dob" placeholder="Date Of Birth" max="2006-08-24" onfocus="(this.type='date')" pattern="\d{4}-\d{2}-\d{2}" required>-->
+			<input type="text" id="login-dob" placeholder="Date Of Birth" onfocus="setMaxDate(this)" pattern="\d{4}-\d{2}-\d{2}" required>
+
 
 
             <!-- GENDER SELECTION TODO -->
@@ -312,6 +314,22 @@
             phoneNumberInput.value = inputValue;
         });
     });
+</script>
+
+<script>
+function setMaxDate(input) {
+    const today = new Date();
+    const eighteenYearsAgo = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+    
+    const year = eighteenYearsAgo.getFullYear();
+    const month = String(eighteenYearsAgo.getMonth() + 1).padStart(2, '0'); // Months are 0-based, so add 1
+    const day = String(eighteenYearsAgo.getDate()).padStart(2, '0');
+    
+    const maxDate = `${year}-${month}-${day}`;
+    
+    input.type = 'date';
+    input.max = maxDate;
+}
 </script>
 
 </body>

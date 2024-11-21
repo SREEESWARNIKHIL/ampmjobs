@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 
 <head>
@@ -49,20 +49,189 @@
   </section>
   <!-- End Hero -->
 
+
+
   <main id="main">
 
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
 
-        <div class="row">
-			<div class="notification-container-1">
-        		<div id="notification-1" class="notification-1"></div>
+<div class="notification-container2">
+  <div id="notification2"></div>
+</div>
+
+<div class="notification-carousel-container">
+  <div class="carousel-container">
+    <!-- Carousel items will be dynamically generated -->
+  </div>
+  <div class="dots-container">
+    <!-- Dots will be dynamically generated -->
+  </div>
+</div>
+
+<script>
+  // Desktop notifications
+  const notification2 = [
+    "New Job Posted: Delivery Boys Required -- The Malik Group - Kukatpally -- Please Login Dashboard To Apply",
+    "New Job Posted: Catering waiters, Cooks Required -- De Cafe Studio - Malakpet -- Please Login Dashboard To Apply",
+    "Hurry up !!! for the Registration and Avail Discounts, Please call us on the below numbers."
+  ];
+
+  let currentIndex1 = 0;
+  const notification2Element = document.getElementById('notification2');
+
+  function showNextNotification2() {
+    const notification2Text = notification2[currentIndex1];
+    notification2Element.innerHTML = '';
+    notification2Text.split('').forEach((char, index) => {
+      const span = document.createElement('span');
+      span.textContent = char === ' ' ? '\u00A0' : char;
+      span.className = 'letter';
+      span.style.animationDelay = `${index * 0}s`;
+      notification2Element.appendChild(span);
+    });
+    currentIndex1 = (currentIndex1 + 1) % notification2.length;
+  }
+
+  // Initial notification2
+  showNextNotification2();
+
+  // Change notification2 every 2 seconds
+  setInterval(showNextNotification2, 4000);
+
+  // Mobile carousel
+  const notification2small = [
+    "New Job Posted: Delivery Boys Required -- The Malik Group - Kukatpally -- Please Login Dashboard To Apply",
+    "New Job Posted: Catering waiters, Cooks Required -- De Cafe Studio - Malakpet -- Please Login Dashboard To Apply",
+    "Hurry up !!! for the Registration and Avail Discounts, Please call us on the below numbers."
+  ];
+
+  const carouselContainer = document.querySelector('.carousel-container');
+  const dotsContainer = document.querySelector('.dots-container');
+
+  function initializeCarousel() {
+    carouselContainer.innerHTML = '';
+    dotsContainer.innerHTML = '';
+
+    notification2small.forEach((notification2, index) => {
+      // Create carousel item
+      const carouselItem = document.createElement('div');
+      carouselItem.className = 'carousel-item';
+      carouselItem.textContent = notification2;
+      carouselContainer.appendChild(carouselItem);
+
+      // Create dot
+      const dot = document.createElement('span');
+      dot.className = 'dot';
+      dot.dataset.index = index; // Add data attribute for index
+      dot.addEventListener('click', () => showNotification2(index));
+      dotsContainer.appendChild(dot);
+    });
+
+    // Set initial active dot
+    if (dotsContainer.children.length > 0) {
+      dotsContainer.children[0].classList.add('active');
+    }
+  }
+
+  function showNotification2(index) {
+    carouselContainer.style.transform = `translateX(-${index * 100}%)`;
+    dotsContainer.querySelector('.dot.active')?.classList.remove('active');
+    if (dotsContainer.children[index]) {
+      dotsContainer.children[index].classList.add('active');
+    }
+  }
+
+  // Initialize carousel
+  initializeCarousel();
+
+  // Initial display
+  showNotification2(0);
+
+  // Pause carousel on hover
+  document.querySelector('.notification-carousel-container').addEventListener('mouseover', () => {
+    clearInterval(autoSlideInterval); // Comment out if not needed
+  });
+
+  // Resume carousel when not hovering
+  document.querySelector('.notification-carousel-container').addEventListener('mouseout', () => {
+    autoSlideInterval = setInterval(() => {
+      const activeDot = dotsContainer.querySelector('.dot.active');
+      const nextIndex = (Array.from(dotsContainer.children).indexOf(activeDot) + 1) % notification2small.length;
+      showNotification2(nextIndex);
+    }, 4000);
+  });
+
+  // Auto-slide functionality
+  let autoSlideInterval = setInterval(() => {
+    const activeDot = dotsContainer.querySelector('.dot.active');
+    const nextIndex = (Array.from(dotsContainer.children).indexOf(activeDot) + 1) % notification2small.length;
+    showNotification2(nextIndex);
+  }, 4000);
+
+</script>
+
+
+
+    <!-- ======= About Section ======= -->
+   <!--<section id="about" class="about">-->
+	   
+      <!-- <div class="container" data-aos="fade-up">
+        <section class="row">-->
+			
+			<!--<div class="notification-container-1">
+        	<div id="notification-1" class="notification-1"></div>
+    		</div>	
+    		</section>-->
+     <section id="why-us" class="why-us">
+      <div class="container" data-aos="fade-up">
+		<div class="notification-container-1">
+        	<div id="notification-1" class="notification-1"></div>
     		</div>
-          <div class="col-lg-5 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-           
-             
+        <div class="row">
+          <div class="col-lg-14  align-items-stretch">
+            <div class="content">
+              
+              <p style="text-align: center;">
+                Welcome to ampmjobs Application, this portal is a Part-Time jobs Application - bridge connecting Students and
+                Employers.
+              </p>
+              <div class="text-center">
+                <a th:href="@{/aboutUs}" class="more-btn">Read More <i class="bx bx-chevron-right"></i></a>
+              </div>
+            </div>
+          </div>
+        
+       <!-- <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-boxes d-flex flex-column justify-content-center">
+             <div class="row">
+                <div class="col-xl-6 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="ri-graduation-cap-fill"></i>
+                    <h4>Earn while u learn</h4>
+                    <p>where you can find the perfect job near you!</p>
+                  </div>
+                </div>
+                <div class="col-xl-6 d-flex align-items-stretch">
+                  <div class="icon-box mt-4 mt-xl-0">
+                    <i class="ri-team-fill"></i>
+                    <h4>Post a job</h4>
+                    <p>where you can find the perfect job near you!</p>
+                  </div>
+                </div>
+
+
+             </div>
+            </div><!-- End .content-->
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Why Us Section -->
+<section>
+	<div class="container" data-aos="fade-up">
+
+        <section class="row">
+          <div class="col-lg-5 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">             
               <div id="myCarousel" class="carousel slide" data-ride="carousel">
                 <!-- Indicators -->
                 <ol class="carousel-indicators">
@@ -107,35 +276,44 @@
                   <span class="glyphicon glyphicon-chevron-right"></span>
                   <span class="sr-only">Next</span>
                 </a>
-              </div>
-          
-           
+              </div>                
           </div>
-          <div class="col-lg-7 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <p><b>1.</b>	Hello Users, Welcome to ampmjobs Application, this Application is a Part-Time jobs platform a bridge connecting Students and Employers. 
-              This is a very user friendly application. 
-              It takes just 2 minutes to complete the registration process.
+          
+          
+          <div class="col-lg-7 pt-4 pt-lg-7 order-2 order-lg-1 content">
+			  <p>
+            <b> Bridge Connecting Students and Employers</b></p>
+            
+            <p>	At ampmjobs, we're bridging the gap between Students and Employers, making it easier than 
+                    ever to find the perfect Part-Time job. Our platform is designed with simplicity and user friendliness in mind, so you can complete the registration process in just 2 minutes. </p>
+            <p>				
+              <b>Why Choose ampmjobs?</b></p>
+              <p>
+               <b>For Students (18+):</b></p>
+              <p><b>1.</b> Access a wide range of Part-Time job opportunities across various locations and 
+               industries.</p>
+            <p>
+              <b>2.</b>	Embrace our "EARN WHILE YOU LEARN" philosophy to gain valuable experience 
+              while studying.
+               </p>
+            <p>
+              <b>3.</b> Support your financial needs and become more self-sustained. </p>
+              
+            <p>
+              <b> For Employers:</b></p>
+              <p><b>1.</b>Tap into a diverse talent pool of eager Students ready for Part-Time  work.
+  
             </p>
             <p>
-              <b>2.</b>	The Bridge helps Students and Employers connect and select each other depending upon their requirements. </p>
+              <b>2.</b>	Support local communities and reduce child labor by offering flexible job 
+             opportunities.</p>
             <p>
-              <b>3.</b>	The Eligible Students should be above 18+ years.
-                  We help Students make some earning while they study for their better living and also become self sustained for their minimum needs. Students will have access to more Part-Time job opportunities in multiple locations and domains of their choice, as we are building on the concept of “EARN WHILE YOU LEARN” across PAN India.
-
-                  This Application allows Students to register online and search for Part-Time jobs of their interest as all the vacancies available in our data base are listed based on the guide lines of registration.
-            </p>
-            <p>
-              <b>4.</b>	Employers will have a platform where they can get a varied pool of talent from the registered Students. Employers will have access to Students who wish to take up Part-Time jobs, to support eradicate child labour and have man power resources of their choice, available for their disposal at any point of time. 
-            </p>
-            <p>
-              <b>5.</b>	The Employers can post their requirements of Part-Time jobs on the Application for a stipulated time, and also search for Students of their choice and line of activities. 
-            </p>
-            <p>
-              <b>6.</b>	Our World Class ecosystem provides a new approach both for Students and Employers to build an upcoming work force 
-            </p>
-            <p>
-              <b>7.</b>	We have made this Application very user friendly, and the user interface is simple for both Students and Employers. As a principle we believe in very low and affordable registration process, which will enable both the Employers and the Students to come forward and get into the right direction of Part-Time jobs concept.
-            </p>
+              <b>3.</b> Easily post job listings, search for potential hires, and build a dynamic 
+              workforce.</p>
+              
+              <p>Join our world-class ecosystem today and experience a fresh approach to Part-Time jobs. With 
+               affordable registration and a simple interface, ampmjobs is your partner in building the future 
+               workforce of India.</p>
           </div>
         </div>
 
@@ -143,16 +321,14 @@
     </section><!-- End About Section -->
 
 
-
-
     <!-- ======= Why Us Section ======= -->
-    <section id="why-us" class="why-us">
+   <!-- <section id="why-us" class="why-us">
       <div class="container" data-aos="fade-up">
 
         <div class="row">
           <div class="col-lg-4 d-flex align-items-stretch">
             <div class="content">
-              <h4>Why Choose ampmjobs</h4>
+              
               <p>
                 Welcome to ampmjobs Application, this portal is a Part-Time jobs Application - bridge connecting Students and
                 Employers.
@@ -162,9 +338,10 @@
               </div>
             </div>
           </div>
+        
           <div class="col-lg-8 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
             <div class="icon-boxes d-flex flex-column justify-content-center">
-              <div class="row">
+             <div class="row">
                 <div class="col-xl-6 d-flex align-items-stretch">
                   <div class="icon-box mt-4 mt-xl-0">
                     <i class="ri-graduation-cap-fill"></i>
@@ -180,14 +357,19 @@
                   </div>
                 </div>
 
-              </div>
+
+             </div>
             </div><!-- End .content-->
-          </div>
+         <!-- </div>
         </div>
 
       </div>
     </section><!-- End Why Us Section -->
     <!-- ======= Features Section ======= -->
+    
+    <div class="content">
+		<h1 style="text-align: center;"><b>Our Clients</b></h1>
+	</div><br>
     <section id="features" class="features">
       <div class="container" data-aos="fade-up">
 
@@ -199,24 +381,30 @@
               <h3><a href="">De Cafe Studio</a></h3>
             </div>
           </div>
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+		  <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
             <div class="icon-box">
 			  <img th:src="@{/assets/img/GrillAffairs-1.jpg}" style="width:32px;height: 32px;background-image:cover;margin-right: 10px;">
               <h3><a href="">Grill affair</a></h3>
             </div>
           </div>
-          <!--<div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <!--<div class="col-lg-3 col-md-4 mt-6 mt-md-0">
             <div class="icon-box">
               <i class="ri-bar-chart-box-line" style="color: #5578ff;"></i>
               <h3><a href="">Swiggy</a></h3>
             </div>
           </div>-->
-          <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
+          <div class="col-lg-3 col-md-4 mt-6 mt-md-0">
+            <div class="icon-box">
+              <img th:src="@{/assets/img/wanderlust.jpeg}" style="width:32px;height: 32px;background-image:cover;margin-right: 10px;">
+              <h3><a href="">Wanderlust bakes</a></h3>
+            </div>
+          </div>
+          <!--<div class="col-lg-3 col-md-4 mt-4 mt-md-0">
             <div class="icon-box">
               <i class="ri-calendar-todo-line" style="color: #e80368;"></i>
               <h3><a href="">unban clap</a></h3>
             </div>
-          </div>
+          </div>-->
           <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
             <div class="icon-box">
               <i class="ri-paint-brush-line" style="color: #e361ff;"></i>
@@ -309,13 +497,13 @@ const notificationsmall= [
 	    "Hurry up !!! for the Registration and Avail Discounts, Please call us on the below numbers."
 ];
 
-let currentIndexsmall = 0;
+let currentIndexsmall = 0; 
 const notificationElement1 = document.getElementById('notification-1');
 
 function showNextNotification1() {
     notificationElement1.textContent = notificationsmall[currentIndexsmall];
     currentIndexsmall = (currentIndexsmall + 1) % notificationsmall.length;
-}
+} 
 
 // Initial notification
 showNextNotification1();
@@ -325,15 +513,15 @@ setInterval(showNextNotification1, 15000);
 
 notificationElement1.addEventListener('mouseover', () => {
     notificationElement1.style.animationPlayState = 'paused';
-});
+}); 
 
 // Resume the animation when not hovering over the notification
 notificationElement1.addEventListener('mouseout', () => {
     notificationElement1.style.animationPlayState = 'running';
 });
+    
+</script>
 
-	</script>
-	
+
 </body>
-
-</html>
+</html>                                                                                                                                         
