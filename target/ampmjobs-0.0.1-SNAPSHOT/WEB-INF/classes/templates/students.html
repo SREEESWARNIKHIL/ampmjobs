@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+
+<head  th:include="header-head :: included-head"></head>
+
+
+<body>
+
+    <!-- ======= Header ======= -->
+       <header  id="header" class="fixed-top" th:include="common/header :: included-content"></header>
+
+    <!-- End Header -->
+    <main id="main">
+ <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs" data-aos="fade-in">
+      <div class="container">
+        <h2>Students</h2>
+        <p>Students need to register simply by providing basic information about them, and also completing the mandatory registration process.</p>
+      </div>
+    </div><!-- End Breadcrumbs -->
+    
+    <!-- ======= Why Us Section ======= -->
+    <section id="why-us" class="why-us">
+     <div class="container" data-aos="fade-up">
+ 
+       <div class="row">
+         
+         <div class="col-lg-12 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+           <div class="icon-boxes d-flex flex-column justify-content-center">
+             <div class="row">
+               <div class="col-xl-3 d-flex align-items-stretch">
+                 <div class="icon-box mt-4 mt-xl-0">
+                   <i class="ri-pencil-fill"></i>
+                   <h4>Register</h4>
+                   <p>Students need to register simply by providing basic information about them, and also completing the mandatory registration information</p>
+                   <a class="clickhere-button" th:href="@{/home/registration/1}">Click Here</a>
+                 </div>
+               </div>
+               <div class="col-xl-3 d-flex align-items-stretch">
+                 <div class="icon-box mt-4 mt-xl-0">
+                   <i class="ri-search-fill"></i>
+                   <h4>Search Jobs</h4>
+                   <p>Once a Student is registered he/she will have access to search and apply for Part-Time jobs on our portal based on their interests & skills in a desired location and timing </p>
+                  </div>
+               </div>
+               <div class="col-xl-3 d-flex align-items-stretch">
+                 <div class="icon-box mt-4 mt-xl-0">
+                   <i class="ri-chat-check-fill"></i>
+                   <h4>Get Selected </h4>
+                   <p>Students gets selected by the Employer directly based on his/her skills required for the Part-Time job</p>
+                 </div>
+               </div>
+               <div class="col-xl-3 d-flex align-items-stretch">
+                 <div class="icon-box mt-4 mt-xl-0">
+                   <i class="ri-money-rupee-circle-line"></i>
+                   <h4>Get Paid</h4>
+                   <p>Payment is made Hourly/Shiftily/Daily/Weekly based on the nature of job and the mode of payment by the Employer</p>
+                 </div>
+               </div>
+               
+             </div>
+           </div><!-- End .content-->
+         </div>
+ 
+       </div>
+ 
+     </div>
+    </section><!-- End Why Us Section -->
+	  
+   <section class="about"> 
+    <div class="container" data-aos="fade-up">
+
+      <div class="row">
+        
+        <div class="col-lg-12 pt-4 pt-lg-0 order-2 order-lg-1 content">
+         
+            <ul>
+               <li><i class="bi bi-check-circle"></i>24/7 Online Access: Search for Part-Time jobs anytime, anywhere, without the need for bulletin boards or advertisements.</li>
+                <li><i class="bi bi-check-circle"></i>Access to More Jobs: Explore a wider range of job opportunities across multiple locations.</li>
+                <li><i class="bi bi-check-circle"></i>Flexibility for Multi-tasking Students: Find Part-Time jobs in any city, even during vacations.</li>
+                <li><i class="bi bi-check-circle"></i>2-Way Job Search: Create Student profiles for Employers to view and choose from. </li>
+                <li><i class="bi bi-check-circle"></i> E-Notifications: Receive direct alerts of new job postings.</li>
+                <li><i class="bi bi-check-circle"></i>Hot Postings: Always find the latest job listings, managed by Employers.  </li>
+                <li><i class="bi bi-check-circle"></i>Secure Experience: Confidential information is only accessible to registered Employers, with alerts for profile views.</li>
+                <li><i class="bi bi-check-circle"></i>Searchable Job Listings: Filter listings to find specific job types easily.</li>
+				 </ul>
+        	<div class="d-flex justify-content-end">
+				<a class="register-button" th:href="@{/home/registration/1}">Register Now</a>
+			</div>
+        </div>
+      </div>
+
+    </div>
+   </section>
+	 
+
+      
+  
+    </main>  
+  
+  
+  <!-- ======= Footer ======= -->
+          <footer id="footer"  th:include="footer :: included-footer"></footer>
+<!-- End Footer -->
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+ <!-- Vendor JS Files -->
+  <script  th:src="@{/assets/vendor/purecounter/purecounter_vanilla.js}"></script>
+  <script  th:src="@{/assets/vendor/aos/aos.js}"></script>
+  <script  th:src="@{/assets/vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+  <script  th:src="@{/assets/vendor/swiper/swiper-bundle.min.js}"></script>
+
+  <!-- Template Main JS File -->
+  <script  th:src="@{/assets/js/main.js}"></script>
+
+</body>
+
+</html>
